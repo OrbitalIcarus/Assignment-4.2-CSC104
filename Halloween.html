@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halloween Spooktacular</title>
+    <!-- Link to the external CSS file for styling -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to the Halloween Spooktacular!</h1>
+        <p>Get ready for some frightful fun!</p>
+        <!-- Countdown Timer -->
+        <div class="countdown"></div>
+    </header>
+    <!-- Decorative Pumpkins -->
+    <div class="decorations">
+        <!-- Left side pumpkin decoration -->
+        <div class="pumpkin-left"></div>
+        <!-- Right side pumpkin decoration -->
+        <div class="pumpkin-right"></div>
+    </div>
+    <main>
+        <!-- About Halloween Section -->
+        <section class="intro">
+            <h2>About Halloween</h2>
+            <p>Halloween, celebrated on October 31st, is a time for costumes, candy, and spooky fun. The holiday's origins trace back to the ancient Celtic festival of Samhain, a time when people believed the boundary between the worlds of the living and the dead was blurred.</p>
+            <p>During Samhain, people lit bonfires and wore costumes to ward off roaming ghosts. As the centuries passed, the celebration evolved, blending with Roman traditions and later Christian practices. By the 19th century, Halloween had become a community-centered holiday with parades, games, and the now-familiar tradition of trick-or-treating.</p>
+            <p>In modern times, Halloween is a celebration of all things spooky and fun. People decorate their homes with jack-o'-lanterns, haunted houses, and cobwebs. Costumes range from the frightening to the whimsical, with parties and gatherings held in the spirit of fun and fright.</p>
+            <p>Today, Halloween is enjoyed by people of all ages, and it’s an opportunity to embrace the thrill of the unknown, enjoy festive treats, and participate in activities that celebrate the season of fall.</p>
+        </section>
+        <!-- Gallery Section -->
+        <section class="gallery">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <!-- Gallery images -->
+                <img src="https://as2.ftcdn.net/v2/jpg/06/23/26/67/1000_F_623266769_InsK8Qyzp3346q3vrFaADBqpKZbxterg.webp" alt="Pumpkin">
+                <img src="https://as2.ftcdn.net/v2/jpg/08/32/46/47/1000_F_832464740_jrHOfB7UpDsd9I3GoazEwFy5XlSLJqeX.webp" alt="Ghost">
+                <img src="https://as2.ftcdn.net/v2/jpg/08/19/88/71/1000_F_819887188_myccto0wUpv64gK6ZAG7xRd7tMizGCch.jpg" alt="Spider">
+                <img src="https://as1.ftcdn.net/v2/jpg/07/15/54/64/1000_F_715546475_vhwLq4ftrB8M30NCH18ub3ZaTjk1whVj.jpg" alt="Witch">
+            </div>
+        </section>
+    </main>
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Halloween Spooktacular. All rights reserved.</p>
+    </footer>
+    <!-- JavaScript for Countdown Timer -->
+    <script>
+        // Function to update the countdown timer
+        function updateCountdown() {
+            const now = new Date(); // Get the current date and time
+            const halloween = new Date(now.getFullYear(), 9, 31); // Set the date for Halloween (October 31st)
+
+            // If Halloween has already passed this year, set the date to next year's Halloween
+            if (now > halloween) {
+                halloween.setFullYear(halloween.getFullYear() + 1); // Move to next year's Halloween
+            }
+
+            // Calculate the time difference between now and Halloween
+            const timeDiff = halloween - now;
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // Convert time difference to days
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Convert remaining time to hours
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60)); // Convert remaining time to minutes
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000); // Convert remaining time to seconds
+
+            // Update the countdown display with the time remaining
+            document.querySelector('.countdown').textContent = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+        }
+
+        // Update the countdown timer every second
+        setInterval(updateCountdown, 1000);
+        // Initialize the countdown timer on page load
+        updateCountdown();
+    </script>
+</body>
+</html>
